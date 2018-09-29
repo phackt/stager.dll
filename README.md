@@ -11,7 +11,7 @@ Replace the payload in stager.cpp  and build the DLL on a Windows machine with `
 
 ![https://phackt.com/public/images/stager/stager2.png](https://phackt.com/public/images/stager/stager2.png)  
 
-*N.B: I added a dynamic analysis bypass taken from this article: [https://wikileaks.org/ciav7p1/cms/files/BypassAVDynamics.pdf](https://wikileaks.org/ciav7p1/cms/files/BypassAVDynamics.pdf)*  
+*N.B: I added a dynamic analysis bypass taken from this article:* [https://wikileaks.org/ciav7p1/cms/files/BypassAVDynamics.pdf](https://wikileaks.org/ciav7p1/cms/files/BypassAVDynamics.pdf)  
 
 Now edit meterpreter.rc and run:
 ```
