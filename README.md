@@ -49,7 +49,7 @@ Now let's keep the obfuscated payload and upload it as .ps1 to VirusTotal:
 
 ![https://phackt.com/public/images/stager/stager3.png](https://phackt.com/public/images/stager/stager3.png)  
 
-Now can we phish someone with a FUD MS Office dropper?. This one is pretty tough, some recon/SE should be done to know at least what kind of AV exists on the machine.  However it's interesting to see that the Dynamic Data Exchange mechanism still flies under the radar of Windows Defender and other well know AVs without any specific obfuscation (no QUOTE or else).  
+Now can we phish someone with a FUD MS Office dropper?. This one is pretty tough, some recon/SE should be done to know at least what kind of AV exists on the machine.  However it's interesting to see that the Dynamic Data Exchange mechanism still flies under the radar of Windows Defender and other well know AVs without any specific obfuscation (no QUOTE or else) with a ration detection of **4/59** on VT.  
 
 For my purpose i finally used the following cell formula (taken from [https://blog.hyperiongray.com/excel-dde-exploitation-and-ml-av-bypass/](https://blog.hyperiongray.com/excel-dde-exploitation-and-ml-av-bypass/)):  
 ```
