@@ -1,4 +1,4 @@
-# stager.dll
+# Stager fufu
 Code from this article: [https://blog.rapid7.com/2018/05/03/hiding-metasploit-shellcode-to-evade-windows-defender/](https://blog.rapid7.com/2018/05/03/hiding-metasploit-shellcode-to-evade-windows-defender/). The advantage is that you can embed well known open source payloads and still fly under the radar.  
 
 ## HOW TO:  
