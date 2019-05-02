@@ -13,7 +13,7 @@ Replace the payload in stager_dll_xx.cpp and build the DLL on a Windows machine 
 You can also build a standalone executable with:  
 ```cl /MT /EHa stager_exe_xx.cpp aes.cpp /Fe:stager.exe```  
   
-In case of troubling while compiling, check [https://stackoverflow.com/questions/42794845/visual-studio-community-2017-cl-exe](https://stackoverflow.com/questions/42794845/visual-studio-community-2017-cl-exe).  
+*In case of troubling while compiling, check [https://stackoverflow.com/questions/42794845/visual-studio-community-2017-cl-exe](https://stackoverflow.com/questions/42794845/visual-studio-community-2017-cl-exe).*  
 
 ![https://phackt.com/public/images/stager/stager2.png](https://phackt.com/public/images/stager/stager2.png)  
 
